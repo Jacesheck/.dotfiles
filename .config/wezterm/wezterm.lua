@@ -15,16 +15,16 @@ config.window_padding = {
 -- Given "/foo/bar" returns "bar"
 -- Given "c:\\foo\\bar" returns "bar"
 function basename(s)
-  return string.gsub(s, '(.*[/\\])(.*)', '%2')
+    return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
 wezterm.on(
-  'format-tab-title',
-  function(tab, tabs, panes, config, hover, max_width)
-    local proc = tab.active_pane.foreground_process_name
+    'format-tab-title',
+    function(tab, tabs, panes, config, hover, max_width)
+        local proc = tab.active_pane.foreground_process_name
 
-    return tostring(tab.tab_index) .. ": " .. basename(proc)
-  end
+        return tostring(tab.tab_index) .. ": " .. basename(proc)
+    end
 )
 
 config.use_fancy_tab_bar = false
@@ -48,17 +48,17 @@ local function replace_home(repl, titles, toSort)
 end
 
 local my_schema = {
-  replace_home("Active: ~", sessionizer.AllActiveWorkspaces {}, false),
-  replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/avt")),
-  replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/projects")),
-  replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/.config")),
-  replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/Desktop")),
-  sessionizer.DefaultWorkspace {},
+    replace_home("Active: ~", sessionizer.AllActiveWorkspaces {}, false),
+    replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/avt")),
+    replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/projects")),
+    replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/.config")),
+    replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/Desktop")),
+    sessionizer.DefaultWorkspace {},
 }
 
 config.keys = {
-  { key = "S", mods = "SUPER", action = sessionizer.show(my_schema) },
-  -- ... other keybindings ...
+    { key = "S", mods = "SUPER", action = sessionizer.show(my_schema) },
+    -- ... other keybindings ...
 }
 
 config.colors = {
@@ -66,6 +66,7 @@ config.colors = {
 }
 
 config.warn_about_missing_glyphs = false
+config.force_reverse_video_cursor = true
 
 -- Finally, return the configuration to wezterm:
 return config
