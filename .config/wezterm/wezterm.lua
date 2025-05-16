@@ -38,7 +38,7 @@ local function replace_home(repl, titles, opts)
         local to_sort = opts.toSort or true
         local title_pairs = titles()
         for i = 1,#title_pairs do
-            title_pairs[i].label = string.gsub(title_pairs[i].label, "/home/%w+", repl)
+            title_pairs[i].label = string.gsub(title_pairs[i].label, "/home/[%w.]+", repl)
         end
         if to_sort then
             table.sort(title_pairs, function(a, b)
@@ -47,7 +47,7 @@ local function replace_home(repl, titles, opts)
         end
         return title_pairs
     end
-    if opts.refresh then
+    if opts.refresh == true then
         return ret
     else
         return ret()
@@ -55,10 +55,9 @@ local function replace_home(repl, titles, opts)
 end
 
 local my_schema = {
-    replace_home("!: ~", sessionizer.AllActiveWorkspaces {}, { toSort = true, refresh = true }),
+    replace_home("!: ~", sessionizer.AllActiveWorkspaces {}, { toSort = false, refresh = true }),
     replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/avt"), {}),
     replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/projects"), {}),
-    replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/.config"), {}),
     replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/Desktop"), {}),
     sessionizer.DefaultWorkspace {},
 }
