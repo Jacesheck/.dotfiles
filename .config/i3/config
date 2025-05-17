@@ -59,6 +59,11 @@ tiling_drag modifier titlebar
 bindsym $super+Return exec i3-sensible-terminal
 bindsym Mod1+Return exec wezterm
 
+# Start firefox
+bindsym $super+b exec firefox
+# Start thunar
+bindsym $super+t exec thunar
+
 # kill focused window
 bindsym $super+Shift+q kill
 
