@@ -31,7 +31,7 @@ function prompt_cmd
     prompt="${prompt}$NC"
     export PS1="$prompt\u: \W \$ "
 }
-export PROMPT_COMMAND=prompt_cmd
+export PROMPT_COMMAND=$PROMPT_COMMAND;prompt_cmd
 
 # Custom aliases
 alias rgf='rg --files | rg'
