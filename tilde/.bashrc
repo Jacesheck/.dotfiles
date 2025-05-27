@@ -60,6 +60,8 @@ export PATH="/home/j.denny/avt/uvvp/protocol/reg_acc/:$PATH"
 export PATH="/opt/forticlient/gui/FortiClient-linux-x64/:$PATH"
 export PATH="/home/j.denny/vpn/:$PATH"
 export PATH="/home/j.denny/debugging/extension/debugAdapters/bin/:$PATH"
+export PATH="/home/j.denny/avt/uvvp/gui/vexos/:$PATH"
+export PATH="/home/j.denny/avt/uvvp/gui/gecko/:$PATH"
 
 giomount() {
     if [[ ! -d /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/ ]]; then
