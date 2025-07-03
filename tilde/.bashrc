@@ -15,6 +15,8 @@ alias grep='grep --color=auto'
 #alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-4-0/GimbalControlPanel.exe & exit'
 alias gcp='./.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 4-0-0-2504_x64/GimbalControlPanelFactory.exe & exit'
 
+alias debugmode='export DEBUG=1; export ZERO_OPTIMISATION=1'
+
 # Bash Prompt
 function prompt_cmd
 {
