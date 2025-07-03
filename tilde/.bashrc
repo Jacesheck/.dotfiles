@@ -31,9 +31,16 @@ function prompt_cmd
         prompt="$GREEN"
     fi
     prompt="${prompt}$NC"
-    export PS1="$prompt\u: \W \$ "
+
+    # Extract build toolchain
+    echo $PS1 | grep -q ">"
+    if [[ $? -eq 0 ]]; then
+        local build_tool=`echo $PS1 | sed s/\>.*/\>\ /`
+    fi
+
+    export PS1="$build_tool$prompt \u: \W \$ "
 }
-export PROMPT_COMMAND=$PROMPT_COMMAND;prompt_cmd
+export PROMPT_COMMAND=prompt_cmd
 
 # Custom aliases
 alias rgf='rg --files | rg'
