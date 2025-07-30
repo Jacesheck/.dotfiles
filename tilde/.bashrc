@@ -68,6 +68,7 @@ export PATH="/home/j.denny/avt/uvvp/protocol/reg_acc/:$PATH"
 export PATH="/opt/forticlient/gui/FortiClient-linux-x64/:$PATH"
 export PATH="/home/j.denny/vpn/:$PATH"
 export PATH="/home/j.denny/debugging/extension/debugAdapters/bin/:$PATH"
+export PATH="/home/j.denny/.opam/opam-init:$PATH"
 
 giomount() {
     if [[ ! -d /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/ ]]; then
@@ -75,5 +76,14 @@ giomount() {
     fi
     cd /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/
 }
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+test -r '/home/jaced/.opam/opam-init/init.sh' && . '/home/jaced/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
+# END opam configuration
 
 export home=49.198.26.89
