@@ -58,7 +58,7 @@ eval "$(fzf --bash)"
 export FZF_DEFAULT_OPTS="--walker=dir,follow --walker-skip=.git,node_modules,target"
 
 # Defaults keyboard
-numlockx &
+numlockx
 xset r rate 200 30
 setxkbmap -option caps:escape
 
