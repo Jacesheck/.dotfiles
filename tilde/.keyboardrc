@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Defaults keyboard
+numlockx
+xset r rate 200 30
+setxkbmap -option caps:escape

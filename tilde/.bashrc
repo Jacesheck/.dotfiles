@@ -57,11 +57,6 @@ export BASH_IT_THEME="atomic"
 eval "$(fzf --bash)"
 export FZF_DEFAULT_OPTS="--walker=dir,follow --walker-skip=.git,node_modules,target"
 
-# Defaults keyboard
-numlockx
-xset r rate 200 30
-setxkbmap -option caps:escape
-
 # External
 export PATH="/opt/stm32cubeprog/bin:$PATH"
 export PATH="/home/j.denny/avt/uvvp/protocol/reg_acc/:$PATH"
