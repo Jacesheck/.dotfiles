@@ -13,7 +13,8 @@ alias grep='grep --color=auto'
 #alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-3-24-fw-upload-fix/GimbalControlPanel.exe & exit'
 #alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-Attitude-Sources/GimbalControlPanel.exe & exit'
 #alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-4-0/GimbalControlPanel.exe & exit'
-alias gcp='./.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 4-0-0-2504_x64/GimbalControlPanelFactory.exe & exit'
+#alias gcp='./.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 4-0-0-2504_x64/GimbalControlPanelFactory.exe & exit'
+alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP_4.1.x/GimbalControlPanel.exe & exit'
 
 alias debugmode='export DEBUG=1; export ZERO_OPTIMISATION=1'
 
