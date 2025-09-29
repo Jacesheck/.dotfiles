@@ -65,6 +65,8 @@ export PATH="/opt/forticlient/gui/FortiClient-linux-x64/:$PATH"
 export PATH="/home/j.denny/vpn/:$PATH"
 export PATH="/home/j.denny/debugging/extension/debugAdapters/bin/:$PATH"
 export PATH="/home/j.denny/.opam/opam-init:$PATH"
+export PATH="/usr/lib/jvm/java-24-openjdk/bin:$PATH"
+
 
 giomount() {
     if [[ ! -d /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/ ]]; then
@@ -81,5 +83,7 @@ giomount() {
 # This section can be safely removed at any time if needed.
 test -r '/home/jaced/.opam/opam-init/init.sh' && . '/home/jaced/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
 # END opam configuration
+
+bash ~/.keyboardrc
 
 export home=49.198.26.89
