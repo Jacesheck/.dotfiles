@@ -16,14 +16,13 @@ alias grep='grep --color=auto'
 #alias gcp='./.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 4-0-0-2504_x64/GimbalControlPanelFactory.exe & exit'
 alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP_4.1.x/GimbalControlPanel.exe & exit'
 
-alias debugmode='export DEBUG=1; export ZERO_OPTIMISATION=1'
-
 # Bash Prompt
 function prompt_cmd
 {
     local EXIT="$?"
     local prompt=""
     GREEN="\[\033[0;32m\]"
+    BLUE="\[\033[0;34m\]"
     RED="\[\033[0;31m\]"
     NC="\[\033[0m\]"
     if [[ $EXIT != 0 ]]; then
@@ -39,14 +38,29 @@ function prompt_cmd
         local build_tool=`echo $PS1 | sed s/\>.*/\>\ /`
     fi
 
-    export PS1="$build_tool$prompt \u: \W \$ "
+    # Debug str
+    unset OPTIMISATION_STR
+    if [[ $ZERO_OPTIMISATION == 1 ]]; then
+        OPTIMISATION_STR=$GREEN
+    elif [[ $NO_OPTIMISATION == 1 ]]; then
+        OPTIMISATION_STR=$BLUE
+    else
+        OPTIMISATION_STR=$RED
+    fi
+
+    unset DEBUG_STR
+    if [[ $DEBUG == 1 ]]; then
+        DEBUG_STR="$OPTIMISATION_STR $NC"
+    fi
+
+    export PS1="$build_tool$prompt \u: $DEBUG_STR\W \$ "
 }
 export PROMPT_COMMAND=prompt_cmd
 
 # Custom aliases
 alias rgf='rg --files | rg'
 alias stm32='STM32_Programmer_CLI'
-alias gitdiffcolor='git diff --color-moved --color-moved-ws=ignore-all-space'
+alias gitdiffcolor='git diff --color-moved=zebra --color-moved-ws=ignore-all-space'
 
 # Theme
 export BASH_IT_THEME="atomic"
@@ -73,6 +87,25 @@ giomount() {
         gio mount smb://192.168.8.21/$1
     fi
     cd /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/
+}
+
+fastserial() {
+    usb=`cd /dev && ls ttyUSB*`
+    sudo bash -c "echo 1 > /sys/bus/usb-serial/devices/$usb/latency_timer"
+}
+
+debugmode() {
+    if [[ $1 == "0" ]]; then
+        unset DEBUG
+        unset ZERO_OPTIMISATION
+    else
+        export DEBUG=1;
+        export ZERO_OPTIMISATION=1
+    fi
+}
+
+so() {
+    source ~/.bashrc
 }
 
 
