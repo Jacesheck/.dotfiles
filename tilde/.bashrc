@@ -33,9 +33,8 @@ function prompt_cmd
     prompt="${prompt}$NC"
 
     # Extract build toolchain
-    echo $PS1 | grep -q ">"
-    if [[ $? -eq 0 ]]; then
-        local build_tool=`echo $PS1 | sed s/\>.*/\>\ /`
+    if [[ -n $TOOLCHAIN ]]; then
+        local build_tool="<$TOOLCHAIN> "
     fi
 
     # Debug str
