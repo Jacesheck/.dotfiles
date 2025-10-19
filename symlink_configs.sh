@@ -41,14 +41,13 @@ create_symlinks()
 {
     dot_files=`ls -A $1`
     for dotfile in $dot_files; do
-        echo ""
         ls -A $2 | grep $dotfile > /dev/null
         if [[ $? == 1 ]]; then
             create_symlink $(pwd)/$1/$dotfile $2/$dotfile
         else
 	    if [[ $CLEAN == 1 || $FRESH == 1 ]]; then
                 echo "Deleting symlink $2/$dotfile"
-		run "rm $2/$dotfile"
+		run "rm -r $2/$dotfile"
                 if [[ $FRESH == 1 ]]; then
                     create_symlink $(pwd)/$1/$dotfile $2/$dotfile
                 fi
@@ -63,3 +62,4 @@ create_symlinks()
 # Create symlinks for each dotfile in .config
 create_symlinks .config ~/.config
 create_symlinks tilde ~
+create_symlinks etc /etc
