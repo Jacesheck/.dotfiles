@@ -41,6 +41,7 @@ create_symlinks()
 {
     dot_files=`ls -A $1`
     for dotfile in $dot_files; do
+        echo "" # Newline
         ls -A $2 | grep $dotfile > /dev/null
         if [[ $? == 1 ]]; then
             create_symlink $(pwd)/$1/$dotfile $2/$dotfile
