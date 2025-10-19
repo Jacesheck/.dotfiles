@@ -73,6 +73,7 @@ config.colors = {
 
 config.warn_about_missing_glyphs = false
 config.force_reverse_video_cursor = true
+config.enable_wayland = false
 
 -- Finally, return the configuration to wezterm:
 return config
