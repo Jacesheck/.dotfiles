@@ -6,8 +6,11 @@ if [ $# -ne 0 ]; then
       if [[ $arg = "-d" ]]; then
           echo "DRY_RUN=1"
           DRY_RUN=1
-      elif [[ $arg = "--clean" ]]; then
-          echo "CLEAN=1"
+      elif [[ $arg = "-f" ]]; then
+          echo "FRESH=1" # Remove and install
+	  FRESH=1
+      elif [[ $arg = "-c" ]]; then
+          echo "CLEAN=1" # Remove only
 	  CLEAN=1
       fi
     # Add your checks or operations here
@@ -24,21 +27,32 @@ run()
     fi
 }
 
+# 1. symlink (full)
+# 2. original (full)
+create_symlink()
+{
+    echo "Creating symlink $2"
+    run "ln -s $1 $2"
+}
+
 # 1. local dir
 # 2. symlink dir
 create_symlinks()
 {
     dot_files=`ls -A $1`
     for dotfile in $dot_files; do
+        echo ""
         ls -A $2 | grep $dotfile > /dev/null
         if [[ $? == 1 ]]; then
-            echo "Creating symlink $2/$dotfile"
-            run "ln -s $(pwd)/$1/$dotfile $2/$dotfile"
+            create_symlink $(pwd)/$1/$dotfile $2/$dotfile
         else
-	    if [[ $CLEAN == 1 ]]; then
+	    if [[ $CLEAN == 1 || $FRESH == 1 ]]; then
                 echo "Deleting symlink $2/$dotfile"
 		run "rm $2/$dotfile"
-		continue
+                if [[ $FRESH == 1 ]]; then
+                    create_symlink $(pwd)/$1/$dotfile $2/$dotfile
+                fi
+                continue
 	    fi
 
             echo "$2/$dotfile already exists"
