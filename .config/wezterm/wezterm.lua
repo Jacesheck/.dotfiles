@@ -64,6 +64,7 @@ local my_schema = {
 
 config.keys = {
     { key = "S", mods = "SUPER", action = sessionizer.show(my_schema) },
+    { key = "t", mods = "SUPER", action = wezterm.action.DisableDefaultAssignment },
     -- ... other keybindings ...
 }
 
