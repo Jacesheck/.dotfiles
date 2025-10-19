@@ -117,6 +117,4 @@ so() {
 test -r '/home/jaced/.opam/opam-init/init.sh' && . '/home/jaced/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
 # END opam configuration
 
-bash ~/.keyboardrc
-
 export home=49.198.26.89
