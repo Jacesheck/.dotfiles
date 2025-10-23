@@ -78,7 +78,7 @@ export PATH="/opt/forticlient/gui/FortiClient-linux-x64/:$PATH"
 export PATH="/home/j.denny/vpn/:$PATH"
 export PATH="/home/j.denny/debugging/extension/debugAdapters/bin/:$PATH"
 export PATH="/home/j.denny/.opam/opam-init:$PATH"
-export PATH="/usr/lib/jvm/java-24-openjdk/bin:$PATH"
+export PATH="/usr/lib/jvm/java-25-openjdk/bin:$PATH"
 
 
 giomount() {
