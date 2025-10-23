@@ -1,0 +1,1 @@
+https://github.com/woioeow/hyprland-dotfiles/blob/main/hypr_style1/waybar/style.css

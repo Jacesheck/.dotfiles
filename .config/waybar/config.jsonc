@@ -1,130 +1,153 @@
 {
   "layer": "top",
   "position": "top",
-  "autohide": true,
-  "autohide-blocked": false,
-  "exclusive": true,
-  "passthrough": false,
-  "gtk-layer-shell": true,
-  /* === Modules Order === */
+  "height": 32,
+  "spacing": 0,
   "modules-left": [
-    "custom/archicon",
-    "clock",
-    "cpu",
-    "memory",
-    "disk",
-    "temperature"
+    "hyprland/workspaces",
+    "tray",
+    "custom/lock",
+    "custom/reboot",
+    "custom/power"
   ],
-  "modules-center": [
-    "hyprland/workspaces"
-  ],
+  "modules-center": ["hyprland/window"],
   "modules-right": [
-    "wlr/taskbar",
-    "idle_inhibitor",
-    "pulseaudio/slider",
-    "pulseaudio",
     "network",
-    "hyprland/language"
+    "battery",
+    "bluetooth",
+    "pulseaudio",
+    "backlight",
+    "custom/temperature",
+    "memory",
+    "cpu",
+    "clock"
   ],
-  /* === Modules Left === */
-  "custom/archicon": {
-    "format": "",
-    "on-click": "wofi --show drun",
-    "tooltip": false
-  },
-  "clock": {
-    "timezone": "America/Mexico_City",
-    "format": "{:%I:%M  %d, %m}",
-    "tooltip-format": "{calendar}",
-    "calendar": {
-      "mode": "month"
-    }
-  },
-  "cpu": {
-    "format": "{usage}% ",
-    "tooltip": true,
-    "tooltip-format": "Uso de CPU: {usage}%\nNúcleos: {cores}"
-  },
-  "memory": {
-    "format": "{}% 󰍛",
-    "tooltip": true,
-    "tooltip-format": "RAM en uso: {used} / {total} ({percentage}%)"
-  },
-  "disk": {
-    "format": "{percentage_free}% ",
-    "tooltip": true,
-    "tooltip-format": "Espacio libre: {free} / {total} ({percentage_free}%)"
-  },
-  "temperature": {
-    "format": "{temperatureC}°C {icon}",
-    "tooltip": true,
-    "tooltip-format": "Temperatura actual: {temperatureC}°C\nCrítico si > 80°C",
-    "format-icons": [
-      ""
-    ]
-  },
-  /* === Modules Center === */
   "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "active": ""
-    },
-    "persistent-workspaces": {
-      "*": 2
-    },
-    "disable-scroll": true,
+    "disable-scroll": false,
     "all-outputs": true,
-    "show-special": true
-  },
-  /* === Modules Right === */
-  "wlr/taskbar": {
     "format": "{icon}",
-    "all-outputs": true,
-    "active-first": true,
-    "tooltip-format": "{name}",
     "on-click": "activate",
-    "on-click-middle": "close",
-    "ignore-list": [
-      "rofi"
-    ]
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
+    "persistent-workspaces": {
+    "*":[2,3]
+    },
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "1": "󰣇",
+      "2": "",
+      "3": "󰈹",
+      "4": "󰣇",
+      "5": "󰣇",
+      "6": "󰣇",
+      "7": "󰣇",
+      "8": "󰣇",
+      "9": "󰣇",
+      "default": ""
     }
   },
-  "pulseaudio/slider": {
-    "format": "{volume}%",
-    "format-muted": " MUTE",
-    "step": 5,
-    "tooltip": false
+  "custom/lock": {
+  "format": "<span color='#00FFFF'>  </span>",
+  "on-click": "hyprlock",
+  "tooltip": true,
+  "tooltip-format": "锁屏"
   },
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-muted": " {format_source}",
-    "format-icons": {
-      "default": [
-        "",
-        ""
-      ]
-    }
+  "custom/reboot": {
+    "format": "<span color='#FFD700'>  </span>",
+    "on-click": "reboot",
+    "tooltip": true,
+    "tooltip-format": "重启"
+  },
+  "custom/power": {
+    "format": "<span color='#FF4040'>  </span>",
+    "on-click": "poweroff",
+    "tooltip": true,
+    "tooltip-format": "关机"
   },
   "network": {
-    "format": "{ifname}",
-    "format-ethernet": "{ifname} 󰈀",
-    "format-disconnected": " ",
-    "tooltip-format": " {ifname} via {gwaddr}",
-    "tooltip-format-ethernet": " {ifname} {ipaddr}/{cidr}",
-    "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50
+    "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
+    "format-ethernet": "<span color='#7FFF00'> </span>Wired ",
+    "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
+    "format-linked": "<span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
+    "format-disconnected": "<span color='#FF4040'>  </span>Disconnected ",
+    "format-alt": "<span color='#00FFFF'> 󰤨 </span>{signalStrength}% ",
+    "interval": 1
   },
-  "hyprland/language": {
-    "format": "{} ",
-    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
-    "format-es": "ESP",
-    "format-en": "ENG"
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span color='#28CD41'> {icon} </span>{capacity}% ",
+    "format-charging": " 󱐋{capacity}%",
+	  "interval": 1,
+    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
+    "tooltip": true
+  },
+  "pulseaudio": {
+    "format": "<span color='#00FF7F'>{icon}</span>{volume}% ",
+    "format-muted": "<span color='#FF4040'> 󰖁 </span>0% ",
+    "format-icons": {
+      "headphone": "<span color='#BF00FF'>  </span>",
+      "hands-free": "<span color='#BF00FF'>  </span>",
+      "headset": "<span color='#BF00FF'>  </span>",
+      "phone": "<span color='#00FFFF'>  </span>",
+      "portable": "<span color='#00FFFF'>  </span>",
+      "car": "<span color='#FFA500'>  </span>",
+      "default": [
+        "<span color='#808080'>  </span>",
+        "<span color='#FFFF66'>  </span>",
+        "<span color='#00FF7F'>  </span>"
+      ]
+    },
+    "on-click-right": "pavucontrol -t 3",
+    "on-click": "pactl -- set-sink-mute 0 toggle",
+    "tooltip": true,
+    "tooltip-format": "当前系统声音: {volume}%"
+  },
+  "custom/temperature": {
+    "exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
+    "format": "<span color='#FFA500'> </span>{}°C ",
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "当前 CPU 温度: {}°C"
+  },
+  "memory": {
+    "format": "<span color='#8A2BE2'>  </span>{used:0.1f}G/{total:0.1f}G ",
+    "tooltip": true,
+    "tooltip-format": "当前内存占比: {used:0.2f}G/{total:0.2f}G"
+  },
+  "cpu": {
+    "format": "<span color='#FF9F0A'>  </span>{usage}% ",
+    "tooltip": true
+  },
+  "clock": {
+    "interval": 1,
+    "timezone": "Asia/Chengdu",
+    "format": "<span color='#BF00FF'>  </span>{:%H:%M} ",
+    "tooltip": true,
+    "tooltip-format": "{:L%Y 年 %m 月 %d 日, %A}"
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 6
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<span color='#FFD700'>{icon}</span>{percent}% ",
+    "tooltip": true,
+    "tooltip-format": "当前屏幕亮度: {percent}%",
+    "format-icons": [
+      "<span color='#696969'> 󰃞 </span>",  // 暗 - 深灰
+      "<span color='#A9A9A9'> 󰃝 </span>",  // 中 - 灰
+      "<span color='#FFFF66'> 󰃟 </span>",  // 亮 - 柠檬黄
+      "<span color='#FFD700'> 󰃠 </span>"   // 最亮 - 金色
+    ]
+  },
+  "bluetooth": {
+    "format": "<span color='#00BFFF'>  </span>{status} ",
+    "format-connected": "<span color='#00BFFF'>  </span>{device_alias} ",
+    "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias}{device_battery_percentage}% ",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   }
 }

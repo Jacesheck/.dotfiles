@@ -1,174 +1,121 @@
-/* -- Global rules -- */
+/* 全局设置 */
 * {
+  font-family: "CaskaydiaCove Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Free Solid";
+  font-weight: bold;
+  font-size: 16px;
+  color: #dcdfe1;
+}
+
+/* 透明 Waybar 背景 */
+#waybar {
+  background-color: rgba(0, 0, 0, 0);
   border: none;
-  font-family: "JetbrainsMono Nerd Font";
-  font-size: 15px;
-  min-height: 10px;
+  box-shadow: none;
 }
 
-window#waybar {
-  background: rgba(34, 36, 54, 0.6);
-}
-
-window#waybar.hidden {
-  opacity: 0.2;
-}
-
-/* - Genera rules for visible modules -- */
-#custom-archicon,
-#clock,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#idle_inhibitor,
-#pulseaudio,
-#pulseaudio-slider,
-#network,
-#language {
-  color: #161320;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
-}
-
-/* Separation to the left */
-#custom-archicon,
-#cpu,
-#idle_inhibitor {
-  margin-left: 5px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-/* Separation to the rigth */
-#clock,
-#temperature,
-#language {
-  margin-right: 5px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-/* -- Specific styles -- */
-
-/* Modules left */
-#custom-archicon {
-  font-size: 20px;
-  color: #89B4FA;
-  background: #161320;
-  padding-right: 17px;
-}
-
-#clock {
-  background: #ABE9B3;
-}
-
-#cpu {
-  background: #96CDFB;
-}
-
-#memory {
-  background: #DDB6F2;
-}
-
-#disk {
-  background: #F5C2E7;
-}
-
-#temperature {
-  background: #F8BD96;
-}
-
-/* Modules center */
-#workspaces {
-  background: rgba(0, 0, 0, 0.5);
+/* 所有模块统一风格 */
+#workspaces,
+#window,
+#tray{
+  /*background-color: rgba(29,31,46, 0.95);*/
+  background-color: rgba(15,27,53,0.9);
+  padding: 4px 6px; /* 保持内部间距 */
+  margin-top: 6px; /* 外部间距增加 */
+  margin-left: 6px; /* 外部间距增加 */
+  margin-right: 6px; /* 外部间距增加 */
   border-radius: 10px;
-  margin: 6px 5px;
-  padding: 0px 6px;
+  border-width: 0px;
 }
 
-#workspaces button {
-  color: #B5E8E0;
-  background: transparent;
-  padding: 4px 4px;
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+#clock,
+#custom-power{
+  background-color: rgba(15,27,53,0.9);
+  margin-top: 6px; /* 与屏幕顶部留出距离 */
+  margin-right: 6px;
+  /*margin-bottom: 4px;*/
+  padding: 4px 2px; /* 保持内部间距 */
+  border-radius: 0 10px 10px 0;
+  border-width: 0px;
 }
 
-#workspaces button.occupied {
-  color: #A6E3A1;
+#network,
+#custom-lock{
+  background-color: rgba(15,27,53,0.9);
+  margin-top: 6px; /* 与屏幕顶部留出距离 */
+  margin-left: 6px;
+  /*margin-bottom: 4px;*/
+  padding: 4px 2px; /* 保持内部间距 */
+  border-radius: 10px 0 0 10px;
+  border-width: 0px;
+}
+
+#custom-reboot,
+#bluetooth,
+#battery,
+#pulseaudio,
+#backlight,
+#custom-temperature,
+#memory,
+#cpu{
+  background-color: rgba(15,27,53,0.9);
+  margin-top: 6px; /* 与屏幕顶部留出距离 */
+  /*margin-bottom: 4px;*/
+  padding: 4px 2px; /* 保持内部间距 */
+  border-width: 0px;
+}
+
+#custpm-temperature.critical,
+#pulseaudio.muted {
+  color: #FF0000;
+  padding-top: 0;
+}
+
+/* 鼠标悬停变亮一点 */
+#bluetooth:hover,
+#network:hover,
+/*#tray:hover,*/
+#backlight:hover,
+#battery:hover,
+#pulseaudio:hover,
+#custom-temperature:hover,
+#memory:hover,
+#cpu:hover,
+#clock:hover,
+#custom-lock:hover,
+#custom-reboot:hover,
+#custom-power:hover,
+/*#workspaces:hover,*/
+#window:hover {
+  background-color: rgba(70, 75, 90, 0.9);
+}
+
+/* 工作区激活状态高亮 */
+#workspaces button:hover{
+  background-color: rgba(97, 175, 239, 0.2);
+  padding: 2px 8px;
+  margin: 0 2px;
+  border-radius: 10px;
 }
 
 #workspaces button.active {
-  color: #89B4FA;
-  text-shadow: 0 0 4px #ABE9B3;
-}
-
-#workspaces button:hover {
-  color: #89B4FA;
-}
-
-#workspaces button.active:hover {}
-
-/* Modules right */
-#taskbar {
-  background: transparent;
+  background-color: #61afef; /* 蓝色高亮 */
+  color: #ffffff;
+  padding: 2px 8px;
+  margin: 0 2px;
   border-radius: 10px;
-  padding: 0px 5px;
-  margin: 6px 5px;
 }
 
-#taskbar button {
-  padding: 0px 5px;
-  margin: 0px 3px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
+/* 未激活工作区按钮 */
+#workspaces button {
+  background: transparent;
+  border: none;
+  color: #888888;
+  padding: 2px 8px;
+  margin: 0 2px;
+  font-weight: bold;
 }
 
-#taskbar button.active {
-  background: rgba(34, 36, 54, 0.5);
-}
-
-#taskbar button:hover {
-  background: rgba(34, 36, 54, 0.5);
-}
-
-#idle_inhibitor {
-  background: #B5E8E0;
-  padding-right: 15px;
-}
-
-#pulseaudio {
-  min-width: 55px;
-  color: #1A1826;
-  background: #F5E0DC;
-}
-
-#pulseaudio-slider {
-  color: #1A1826;
-  background: #E8A2AF;
-  min-width: 50px;
-}
-
-#pulseaudio-slider slider {}
-
-
-#network {
-  background: #CBA6F7;
-  padding-right: 13px;
-}
-
-#language {
-  background: #A6E3A1;
-  padding-right: 15px;
-}
-
-/* === Optional animation === */
-@keyframes blink {
-  to {
-    background-color: #BF616A;
-    color: #B5E8E0;
-  }
+#window {
+  font-weight: 500;
+  font-style: italic;
 }
