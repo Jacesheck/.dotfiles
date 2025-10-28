@@ -6,9 +6,6 @@
   "modules-left": [
     "hyprland/workspaces",
     "tray",
-    "custom/lock",
-    "custom/reboot",
-    "custom/power"
   ],
   "modules-center": ["hyprland/window"],
   "modules-right": [
