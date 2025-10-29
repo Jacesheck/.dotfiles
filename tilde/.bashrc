@@ -96,9 +96,15 @@ fastserial() {
 debugmode() {
     if [[ $1 == "0" ]]; then
         unset DEBUG
+        unset NO_OPTIMISATION
+        unset ZERO_OPTIMISATION
+    elif [[ $1 == "g" ]]; then
+        export DEBUG=1;
+        export NO_OPTIMISATION=1
         unset ZERO_OPTIMISATION
     else
         export DEBUG=1;
+        unset NO_OPTIMISATION
         export ZERO_OPTIMISATION=1
     fi
 }
