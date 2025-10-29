@@ -8,7 +8,7 @@ if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
             hyprctl keyword monitor $SCREEN,disable;;
         "b") hyprctl keyword monitor $SCREEN,preferred,auto,auto &&
             hyprctl keyword monitor eDP-1,disable;;
-        "s") hyprctl keyword monitor ,preferred,auto,auto &&
+        "s") hyprctl keyword monitor eDP-1,preferred,auto,auto &&
             hyprctl keyword monitor $SCREEN,preffered,auto,auto,mirror,eDP-1;;
         *)
             if [[ -n $SCREEN ]]; then
