@@ -7,14 +7,14 @@
 alias xclip='xclip -selection c'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-#alias gcp='./.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 3-18-1-2304_x64/GimbalControlPanelFactory.exe & exit'
-#alias gcp='./.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 3-2_x64/GimbalControlPanel.exe & exit'
-#alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-3-22-fw-routing/GimbalControlPanel.exe & exit'
-#alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-3-24-fw-upload-fix/GimbalControlPanel.exe & exit'
-#alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-Attitude-Sources/GimbalControlPanel.exe & exit'
-#alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP-4-0/GimbalControlPanel.exe & exit'
-#alias gcp='./.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 4-0-0-2504_x64/GimbalControlPanelFactory.exe & exit'
-alias gcp='./.wine/drive_c/Program\ Files/AVT/GCP_4.1.x/GimbalControlPanel.exe & exit'
+#alias gcp='~/.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 3-18-1-2304_x64/GimbalControlPanelFactory.exe & exit'
+#alias gcp='~/.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 3-2_x64/GimbalControlPanel.exe & exit'
+#alias gcp='~/.wine/drive_c/Program\ Files/AVT/GCP-3-22-fw-routing/GimbalControlPanel.exe & exit'
+#alias gcp='~/.wine/drive_c/Program\ Files/AVT/GCP-3-24-fw-upload-fix/GimbalControlPanel.exe & exit'
+#alias gcp='~/.wine/drive_c/Program\ Files/AVT/GCP-Attitude-Sources/GimbalControlPanel.exe & exit'
+#alias gcp='~/.wine/drive_c/Program\ Files/AVT/GCP-4-0/GimbalControlPanel.exe & exit'
+#alias gcp='~/.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 4-0-0-2504_x64/GimbalControlPanelFactory.exe & exit'
+alias gcp='~/.wine/drive_c/Program\ Files/AVT/GCP_4.1.x/GimbalControlPanel.exe & exit'
 
 # Bash Prompt
 function prompt_cmd
