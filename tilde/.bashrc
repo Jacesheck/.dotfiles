@@ -109,6 +109,8 @@ debugmode() {
     fi
 }
 
+alias hyprshot='hyprshot -m region --clipboard-only'
+
 so() {
     source ~/.bashrc
 }
