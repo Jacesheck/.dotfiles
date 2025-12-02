@@ -11,11 +11,11 @@
   "modules-right": [
     "network",
     "battery",
-    "bluetooth",
+    //"bluetooth",
     "pulseaudio",
-    "backlight",
-    "custom/temperature",
-    "memory",
+    //"backlight",
+    //"custom/temperature",
+    //"memory",
     "cpu",
     "clock"
   ],
