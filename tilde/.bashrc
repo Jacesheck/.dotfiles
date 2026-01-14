@@ -16,6 +16,11 @@ alias grep='grep --color=auto'
 #alias gcp='~/.wine/drive_c/Program\ Files/AVT/Gimbal\ Control\ Panel\ Factory\ 4-0-0-2504_x64/GimbalControlPanelFactory.exe & exit'
 alias gcp='~/.wine/drive_c/Program\ Files/AVT/GCP_4.1.x/GimbalControlPanel.exe & exit'
 
+# Alow remote htop on ghostty
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+  export TERM=xterm-256color
+fi
+
 # Bash Prompt
 function prompt_cmd
 {
