@@ -120,6 +120,11 @@ so() {
     source ~/.bashrc
 }
 
+git-init() {
+    eval $(ssh-agent -s)
+    ssh-add
+}
+
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
