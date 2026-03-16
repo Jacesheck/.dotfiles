@@ -56,7 +56,7 @@ end
 
 local my_schema = {
     replace_home("!: ~", sessionizer.AllActiveWorkspaces {}, { toSort = false, refresh = true }),
-    replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/avt"), {}),
+    replace_home("~", sessionizer.FdSearch({wezterm.home_dir .. "/avt", max_depth = 3}), {}),
     replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/projects"), {}),
     replace_home("~", sessionizer.FdSearch(wezterm.home_dir .. "/Desktop"), {}),
     sessionizer.DefaultWorkspace {},
