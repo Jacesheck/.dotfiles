@@ -9,7 +9,7 @@ if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
         "b") hyprctl keyword monitor $SCREEN,preferred,auto,1 &&
             hyprctl keyword monitor eDP-1,disable;;
         "s") hyprctl keyword monitor eDP-1,preferred,auto,1 &&
-            hyprctl keyword monitor $SCREEN,preffered,auto,auto,mirror,eDP-1;;
+            hyprctl keyword monitor $SCREEN,highres,auto,auto,mirror,eDP-1;;
         *)
             if [[ -n $SCREEN ]]; then
                 ~/screens.sh b
