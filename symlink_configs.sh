@@ -61,6 +61,6 @@ create_symlinks()
 }
 
 # Create symlinks for each dotfile in .config
-create_symlinks .config ~/.config
+create_symlinks config ~/.config
 create_symlinks tilde ~
 create_symlinks etc /etc
