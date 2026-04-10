@@ -1,5 +1,11 @@
 #!/bin/bash
 
+BLUE="\033[1;34m"
+GREEN="\033[0;32m"
+ORANGE="\033[0;33m"
+RED="\033[0;31m"
+NC="\033[0m"
+
 # Dry run "-d"
 if [ $# -ne 0 ]; then
   for arg in "$@"; do
@@ -21,46 +27,50 @@ fi
 run()
 {
     if [[ $DRY_RUN == 1 ]]; then
-        echo -e "\033[1;34m$1\033[0m"
+        echo -e "$BLUE$1$NC"
     else
         $1
     fi
 }
 
-# 1. symlink (full)
-# 2. original (full)
+# 1. local (full)
+# 2. global (full)
+# 3. filename (notdir)
 create_symlink()
 {
-    echo "Creating symlink $2"
-    run "ln -s $1 $2"
+    local dotfile=$3
+    ls -A $2 | grep $dotfile > /dev/null
+    if [[ $? == 1 ]]; then
+        # Symlink doesn't yet exist
+        echo -e "$GREEN\rCreating symlink $2$NC"
+        run "ln -s $(pwd)/$1/$dotfile $2/$dotfile"
+    else
+        # Symlink exists
+        if [[ $CLEAN == 1 || $FRESH == 1 ]]; then
+            echo -e "$RED\rDeleting symlink $2/$dotfile$NC"
+            run "rm -r $2/$dotfile"
+            if [[ $FRESH == 1 ]]; then
+                echo -e "$GREEN\rCreating symlink $2$NC"
+                run "ln -s $(pwd)/$1/$dotfile $2/$dotfile"
+            fi
+        else
+            echo -e "$ORANGE$2/$dotfile already exists$NC"
+        fi
+    fi
 }
 
 # 1. local dir
 # 2. symlink dir
-create_symlinks()
+create_symlinks_dir()
 {
     dot_files=`ls -A $1`
     for dotfile in $dot_files; do
-        echo "" # Newline
-        ls -A $2 | grep $dotfile > /dev/null
-        if [[ $? == 1 ]]; then
-            create_symlink $(pwd)/$1/$dotfile $2/$dotfile
-        else
-	    if [[ $CLEAN == 1 || $FRESH == 1 ]]; then
-                echo "Deleting symlink $2/$dotfile"
-		run "rm -r $2/$dotfile"
-                if [[ $FRESH == 1 ]]; then
-                    create_symlink $(pwd)/$1/$dotfile $2/$dotfile
-                fi
-                continue
-	    fi
-
-            echo "$2/$dotfile already exists"
-        fi
+        create_symlink $1 $2 $dotfile
     done
 }
 
 # Create symlinks for each dotfile in .config
-create_symlinks config ~/.config
-create_symlinks tilde ~
-create_symlinks etc /etc
+create_symlinks_dir config ~/.config
+create_symlinks_dir tilde ~
+create_symlinks_dir etc /etc
+create_symlink tmux-sessionizer ~/personal/bin tmux-sessionizer

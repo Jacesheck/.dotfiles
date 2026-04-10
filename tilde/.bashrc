@@ -72,19 +72,25 @@ export BASH_IT_THEME="atomic"
 # Fuzzy finding search
 #source /usr/share/fzf/completion.bash && source /usr/share/fzf/key-bindings.bash
 
+# Source - https://stackoverflow.com/a/4201274
+# Posted by Dennis Williamson, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-04-10, License - CC BY-SA 3.0
+
+bind '"\C-f":"tmux-sessionizer\n"'
+
 # Walker options in $FZF_DEFAULT_OPTS
 eval "$(fzf --bash)"
 export FZF_DEFAULT_OPTS="--walker=dir,follow --walker-skip=.git,node_modules,target"
 
 # External
 export PATH="/opt/stm32cubeprog/bin:$PATH"
-export PATH="/home/j.denny/avt/uvvp/protocol/reg_acc/:$PATH"
 export PATH="/opt/forticlient/gui/FortiClient-linux-x64/:$PATH"
 export PATH="/home/j.denny/vpn/:$PATH"
 export PATH="/home/j.denny/debugging/extension/debugAdapters/bin/:$PATH"
 export PATH="/home/j.denny/.opam/opam-init:$PATH"
+export PATH="/home/j.denny/.opam/opam-init:$PATH"
 export PATH="/usr/lib/jvm/java-25-openjdk/bin:$PATH"
-
+export PATH="$HOME/personal/bin:$PATH"
 
 giomount() {
     if [[ ! -d /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/ ]]; then
