@@ -93,11 +93,6 @@ giomount() {
     cd /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/
 }
 
-fastserial() {
-    usb=`cd /dev && ls ttyUSB*`
-    sudo bash -c "echo 1 > /sys/bus/usb-serial/devices/$usb/latency_timer"
-}
-
 debugmode() {
     if [[ $1 == "0" ]]; then
         unset DEBUG
