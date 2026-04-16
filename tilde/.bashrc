@@ -90,7 +90,7 @@ export PATH="/home/j.denny/debugging/extension/debugAdapters/bin/:$PATH"
 export PATH="/home/j.denny/.opam/opam-init:$PATH"
 export PATH="/home/j.denny/.opam/opam-init:$PATH"
 export PATH="/usr/lib/jvm/java-25-openjdk/bin:$PATH"
-export PATH="$HOME/personal/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 giomount() {
     if [[ ! -d /run/user/1000/gvfs/smb-share:server=192.168.8.21,share=$1/ ]]; then

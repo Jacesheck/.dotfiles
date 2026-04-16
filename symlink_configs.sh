@@ -73,4 +73,4 @@ create_symlinks_dir()
 create_symlinks_dir config ~/.config
 create_symlinks_dir tilde ~
 create_symlinks_dir etc /etc
-create_symlink tmux-sessionizer ~/personal/bin tmux-sessionizer
+create_symlink tmux-sessionizer ~/.local/bin tmux-sessionizer
